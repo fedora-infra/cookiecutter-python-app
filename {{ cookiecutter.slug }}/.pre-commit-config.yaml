@@ -27,7 +27,7 @@ repos:
         args: ["--diff"]
 
   - repo: https://github.com/myint/rstcheck
-    rev: 3f92957
+    rev: v4.1.0
     hooks:
       - id: rstcheck
         additional_dependencies: [sphinx]
