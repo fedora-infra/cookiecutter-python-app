@@ -1,0 +1,24 @@
+on:
+  push:
+  pull_request:
+
+name: Tests
+
+jobs:
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure git
+        run: |
+          git config --global user.name Tests
+          git config --global user.email tests@example.com
+
+      - name: Run unit tests with Tox
+        uses: fedora-python/tox-github-action@main
+        with:
+          tox_env: py
+          dnf_install: krb5-devel libpq-devel

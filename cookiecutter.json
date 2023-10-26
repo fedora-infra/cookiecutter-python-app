@@ -1,0 +1,25 @@
+{
+    "name": "Fedora Application",
+    "slug": "{{ cookiecutter.name|lower|replace(' ', '-') }}",
+    "pkg_name": "{{ cookiecutter.slug|replace('-', '_') }}",
+    "camel_name": "{{ cookiecutter.name|replace(' ', '') }}",
+    "docs_url": "https://{{ cookiecutter.slug }}.readthedocs.io",
+    "github_url": "http://github.com/fedora-infra/{{ cookiecutter.slug }}",
+    "url": "{{ cookiecutter.github_url }}",
+    "__year": "{% now 'utc', '%Y' %}",
+    "with_sqlalchemy": false,
+    "with_cli": false,
+    "with_i18n": false,
+    "__prompts__": {
+        "with_sqlalchemy": "Add database support with SQLAlchemy?",
+        "with_cli": "Add a command line interface?",
+        "with_i18n": "Add support for translations (i18n)?"
+    },
+    "_extensions": ["jinja2_time.TimeExtension", "cookiecutter.extensions.RandomStringExtension"],
+    "_copy_without_render": [
+        "LICENSES/*",
+        "devel/ansible/roles/*/*/*",
+        "*/migrations/script.py.mako",
+        "*/migrations/versions/*"
+    ]
+}

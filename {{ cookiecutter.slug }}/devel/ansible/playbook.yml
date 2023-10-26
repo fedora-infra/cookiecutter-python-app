@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+
+  vars:
+    name: {{ cookiecutter.slug }}
+    pkg_name: {{ cookiecutter.pkg_name }}
+    ipa_admin_user: admin
+    ipa_admin_password: password
+    krb_realm: TINYSTAGE.TEST
+
+  roles:
+    - core
+    # If you need Tinystage:
+    # - ipa-client
+    # If you need a TLS cert from Tinystage:
+    # - cert
+    - dev

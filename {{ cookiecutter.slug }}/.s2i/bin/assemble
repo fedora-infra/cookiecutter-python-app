@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+# The assemble script builds the application artifacts from a source and
+# places them into appropriate directories inside the image.
+
+# This should be replaced by micropipenv, supported by the builder image,
+# when https://github.com/thoth-station/micropipenv/issues/186 is fixed.
+
+# Execute the default S2I script
+/usr/libexec/s2i/assemble
+
+set -e
+
+{% if cookiecutter.with_i18n %}
+echo "---> Compiling translations ..."
+pybabel compile -d {{ cookiecutter.pkg_name }}/translations
+{% endif %}
+
+# set permissions for any installed artifacts
+fix-permissions /opt/app-root -P
