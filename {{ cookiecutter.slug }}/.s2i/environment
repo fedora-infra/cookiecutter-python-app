@@ -1,0 +1,4 @@
+# For a CLI app:
+# APP_MODULE={{ cookiecutter.pkg_name }}.cli:main
+UPGRADE_PIP_TO_LATEST=true
+ENABLE_MICROPIPENV=true

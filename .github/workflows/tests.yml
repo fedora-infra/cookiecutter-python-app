@@ -1,0 +1,28 @@
+on:
+  push:
+  pull_request:
+
+name: Tests
+
+jobs:
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    container: fedorapython/fedora-python-tox:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          dnf install -y pre-commit git
+
+      - name: Configure git
+        run: |
+          git config --global user.name Tests
+          git config --global user.email tests@example.com
+          git config --global init.defaultBranch main
+          git config --global --add safe.directory $PWD
+
+      - name: Run unit tests with Tox
+        run: tox -e py -s
