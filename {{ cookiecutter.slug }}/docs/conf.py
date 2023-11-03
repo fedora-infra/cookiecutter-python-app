@@ -11,6 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import re
 import sys
 
 
@@ -106,11 +107,6 @@ myst_heading_anchors = 3
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {"python": ("https://docs.python.org/3", None)}
 
-extlinks = {
-    "commit": ("{{ cookiecutter.github_url }}/commit/%s", ""),
-    "issue": ("{{ cookiecutter.github_url }}/issues/%s", "#"),
-    "pr": ("{{ cookiecutter.github_url }}/pull/%s", "PR#"),
-}
 
 # -- Misc -----
 
@@ -133,5 +129,17 @@ def run_apidoc(_):
     )
 
 
+github_url = "{{ cookiecutter.github_url }}"
+
+
+def changelog_github_links(app, docname, source):
+    if docname != "release_notes":
+        return
+    github_issue_re = re.compile(r"#(\d+)")
+    for docnr, doc in enumerate(source):
+        source[docnr] = github_issue_re.sub(f"[#\\1]({github_url}/issues/\\1)", doc)
+
+
 def setup(app):
     app.connect("builder-inited", run_apidoc)
+    app.connect("source-read", changelog_github_links)

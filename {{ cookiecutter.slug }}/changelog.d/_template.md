@@ -1,11 +1,11 @@
 {%- raw -%}
 {% macro reference(value) -%}
    {%- if value.startswith("PR") -%}
-     [PR #{{ value[2:] }}]({% endraw %}{{ cookiecutter.github_url }}{% raw %}/issues/{{ value[2:] }})
+     PR #{{ value[2:] }}
    {%- elif value.startswith("C") -%}
      [{{ value[1:] }}]({% endraw %}{{ cookiecutter.github_url }}{% raw %}/commits/{{ value[1:] }})
    {%- else -%}
-     [#{{ value }}]({% endraw %}{{ cookiecutter.github_url }}{% raw %}/issues/{{ value }})
+     #{{ value }}
    {%- endif -%}
 {%- endmacro -%}
 

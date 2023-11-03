@@ -122,8 +122,8 @@ directory = "changelog.d"
 start_string = "<!-- towncrier release notes start -->\n"
 underlines = ["", "", ""]
 template = "changelog.d/_template.md"
-title_format = "## [{version}]({{ cookiecutter.github_url }}/tree/{version}) - {project_date}"
-issue_format = "[#{issue}]({{ cookiecutter.github_url }}/issues/{issue})"
+title_format = "## Version [{version}]({{ cookiecutter.github_url }}/tree/{version}) - {project_date}"
+issue_format = "{issue}"
 
 [[tool.towncrier.type]]
 directory = "security"
