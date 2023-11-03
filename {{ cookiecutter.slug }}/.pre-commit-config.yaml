@@ -16,7 +16,6 @@ repos:
     rev: 23.10.1
     hooks:
       - id: black
-        args: ["--diff"]
 
   # Ruff
   - repo: https://github.com/charliermarsh/ruff-pre-commit
@@ -24,7 +23,6 @@ repos:
     rev: v0.1.3
     hooks:
       - id: ruff
-        args: ["--diff"]
 
   - repo: https://github.com/myint/rstcheck
     rev: v6.2.0
