@@ -8,7 +8,7 @@ Source: {{ cookiecutter.github_url }}
 # Copyright: $YEAR $NAME <$CONTACT>
 # License: ...
 
-Files: *.yaml *.md *.toml .gitignore *.ini *.cfg Vagrantfile .readthedocs .s2i/* .github/* devel/ansible/* docs/*
+Files: *.yaml *.yml *.md *.toml .gitignore *.ini *.cfg Vagrantfile .s2i/* .github/* devel/ansible/* docs/*
 Copyright: {{ cookiecutter.__year }} Contributors to the Fedora Project
 License: GPL-3.0-or-later
 
