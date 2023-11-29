@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
-from logging.config import fileConfig
 
 from alembic import context
 from sqlalchemy import engine_from_config, pool
@@ -22,7 +21,7 @@ target_metadata = Base.metadata
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
-fileConfig(alembic_config.config_file_name)
+# logging.config.fileConfig(alembic_config.config_file_name)
 logger = logging.getLogger("alembic.env")
 
 # other values from the config, defined by the needs of env.py,
