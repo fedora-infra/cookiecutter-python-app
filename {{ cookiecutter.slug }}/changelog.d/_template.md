@@ -3,7 +3,7 @@
    {%- if value.startswith("PR") -%}
      PR #{{ value[2:] }}
    {%- elif value.startswith("C") -%}
-     [{{ value[1:] }}]({% endraw %}{{ cookiecutter.github_url }}{% raw %}/commits/{{ value[1:] }})
+     [{{ value[1:] }}]({% endraw %}{{ cookiecutter.github_url }}{% raw %}/commit/{{ value[1:] }})
    {%- else -%}
      #{{ value }}
    {%- endif -%}
@@ -50,9 +50,10 @@ No significant changes.
 
 {% else -%}
 {%- endif %}
+
 {% endfor -%}
-{%- if sections[section]["author"] %}
-## {{definitions['author']["name"]}}
+{% if sections[section]["author"] -%}
+### {{definitions['author']["name"]}}
 
 Many thanks to the contributors of bug reports, pull requests, and pull request
 reviews for this release:
@@ -60,15 +61,11 @@ reviews for this release:
 {% for text, values in sections[section]["author"].items() -%}
 - {{ text }}
 {% endfor -%}
-{%- endif -%}
+{%- endif %}
 
 {% else -%}
 No significant changes.
 
 {% endif %}
 {%- endfor +%}
-{#
-This comment adds one more newline at the end of the rendered newsfile content.
-In this way the there are 2 newlines between the latest release and the previous release content.
-#}
 {%- endraw %}

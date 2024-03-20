@@ -89,7 +89,6 @@ html_static_path = ["_static"]
 
 # -- Extension configuration -------------------------------------------------
 
-
 source_suffix = {
     ".rst": "restructuredtext",
     ".md": "markdown",

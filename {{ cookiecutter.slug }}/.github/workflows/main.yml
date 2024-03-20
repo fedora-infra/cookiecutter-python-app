@@ -1,8 +1,17 @@
+name: Test & Build
+
 on:
   push:
+    branches:
+      - stable
+      - develop
+      - main
+    tags:
   pull_request:
-
-name: Test & Build
+    branches:
+      - stable
+      - develop
+      - main
 
 jobs:
 
