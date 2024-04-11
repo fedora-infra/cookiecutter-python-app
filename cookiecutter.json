@@ -15,7 +15,7 @@
         "with_cli": "Add a command line interface?",
         "with_i18n": "Add support for translations (i18n)?"
     },
-    "_extensions": ["jinja2_time.TimeExtension", "cookiecutter.extensions.RandomStringExtension"],
+    "_extensions": ["cookiecutter.extensions.RandomStringExtension"],
     "_copy_without_render": [
         "LICENSES/*",
         "devel/ansible/roles/*/*/*",
