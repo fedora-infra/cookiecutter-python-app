@@ -45,7 +45,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: dnf install -y libpq-devel krb5-devel
+        run: |
+          dnf install -y libpq-devel krb5-devel
+          pip install poetry>=1.2
 
       - name: Run the licenses check
         run: tox -e licenses
@@ -59,7 +61,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: dnf install -y libpq-devel krb5-devel
+        run: |
+          dnf install -y libpq-devel krb5-devel
+          pip install poetry>=1.2
 
       - name: Build the docs
         run: tox -e docs
@@ -79,7 +83,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: dnf install -y libpq-devel krb5-devel
+        run: |
+          dnf install -y libpq-devel krb5-devel
+          pip install poetry>=1.2
+
+      - name: Mark the working directory as safe for Git
+        run: git config --global --add safe.directory $PWD
 
       - name: Run the tests
         run: tox -e ${{'{{'}} matrix.pyver {{'}}'}}-unit{% if cookiecutter.with_sqlalchemy %}-${{'{{'}} matrix.sqlaver {{'}}'}}{% endif %}
@@ -178,6 +187,8 @@ jobs:
     name: Create a GitHub Release 📢
     needs:
       - publish-to-pypi
+      # The "build" dep is redundant but needed to access the changelog
+      - build
     runs-on: ubuntu-latest
     permissions:
       contents: write  # IMPORTANT: mandatory for making GitHub Releases
