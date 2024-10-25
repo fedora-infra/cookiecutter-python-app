@@ -1,0 +1,12 @@
+TEMPLATES_AUTO_RELOAD = True
+
+# Database
+SQLALCHEMY_DATABASE_URI = "sqlite:///../{{ cookiecutter.slug }}.db"
+
+# Session secret
+SECRET_KEY = "{{ random_ascii_string(64, punctuation=True) }}"
+
+SESSION_COOKIE_HTTPONLY = True
+
+# Set to True for prod...
+SESSION_COOKIE_SECURE = False

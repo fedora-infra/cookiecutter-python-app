@@ -10,10 +10,12 @@
     "with_sqlalchemy": false,
     "with_cli": false,
     "with_i18n": false,
+    "with_flask": false,
     "__prompts__": {
         "with_sqlalchemy": "Add database support with SQLAlchemy?",
         "with_cli": "Add a command line interface?",
-        "with_i18n": "Add support for translations (i18n)?"
+        "with_i18n": "Add support for translations (i18n)?",
+        "with_flask": "Is it a Flask application?"
     },
     "_extensions": ["cookiecutter.extensions.RandomStringExtension"],
     "_copy_without_render": [

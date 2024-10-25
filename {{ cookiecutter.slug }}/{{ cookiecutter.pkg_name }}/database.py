@@ -15,6 +15,9 @@ from sqlalchemy_helpers import (  # noqa: F401
     get_or_create,
     is_sqlite,
 )
+{% if cookiecutter.with_flask -%}
+from sqlalchemy_helpers.flask_ext import get_or_404  # noqa: F401
+{%- endif %}
 
 from {{ cookiecutter.pkg_name }}.config import get_config
 

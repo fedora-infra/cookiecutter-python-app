@@ -1,0 +1,25 @@
+{% raw -%}
+{#
+SPDX-FileCopyrightText: Contributors to the Fedora Project
+
+SPDX-License-Identifier: GPL-3.0-or-later
+#}
+
+{% extends "main.html" %}
+
+{% block title %}
+Profile of {{ user.name }} | {{ super() }}
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+
+    <div id="profile">
+        <ul>
+            <li>{{ _("Username:") }} {{ user.name }}</li>
+            <li>{{ _("Full Name:") }} {{ user.full_name }}</li>
+            <li>{{ _("Timezone:") }} {{ user.timezone }}</li>
+        </ul>
+    </div>
+{% endblock %}
+{%- endraw %}

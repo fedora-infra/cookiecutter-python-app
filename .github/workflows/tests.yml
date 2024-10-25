@@ -15,7 +15,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          dnf install -y pre-commit git
+          dnf install -y pre-commit git black ruff
 
       - name: Configure git
         run: |

@@ -35,6 +35,7 @@ Here are the libraries and services that are integrated:
 - Optionaly, CLI with [Click](click.palletsprojects.com/)
 - Optionaly, database support with [SQLAlchemy](https://www.sqlalchemy.org/)
   & [Alembic](https://alembic.sqlalchemy.org)
+- Optionaly, Flask security with [Flask-Talisman](https://pypi.org/project/flask-talisman/)
 
 
 ## Requirements

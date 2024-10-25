@@ -1,0 +1,30 @@
+{% raw %}
+{#
+SPDX-FileCopyrightText: Contributors to the Fedora Project
+
+SPDX-License-Identifier: GPL-3.0-or-later
+#}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block head %}{% endblock %}
+    <link href="{{ url_for('static', filename='fonts/font-awesome.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" type="text/css">
+    <title>
+    {%- block title -%}
+      {% endraw %}{{ cookiecutter.name }}{% raw %}
+    {%- endblock -%}
+    </title>
+  </head>
+  <body>
+    {% block navbar %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block footer %}{% endblock %}
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>
+{%- endraw %}

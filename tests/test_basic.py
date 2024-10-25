@@ -45,12 +45,17 @@ class Templated:
 @pytest.mark.parametrize("with_sqlalchemy", [False, True])
 @pytest.mark.parametrize("with_cli", [False, True])
 @pytest.mark.parametrize("with_i18n", [False, True])
-def test_basic_creation(tmpdir, with_sqlalchemy, with_cli, with_i18n):
+@pytest.mark.parametrize("with_flask", [False, True])
+def test_basic_creation(tmpdir, with_sqlalchemy, with_cli, with_i18n, with_flask):
+    if with_flask and not with_sqlalchemy:
+        # Not supported
+        pytest.skip("Unsupported: flask without sqlalchemy")
     templated = Templated.create(
         tmpdir=tmpdir,
         with_sqlalchemy=with_sqlalchemy,
         with_cli=with_cli,
         with_i18n=with_i18n,
+        with_flask=with_flask,
     )
     # We can't have 100% coverage with a templated project
     templated.run(["sed", "-i", "-e", "/^fail_under = 100/d", "pyproject.toml"])

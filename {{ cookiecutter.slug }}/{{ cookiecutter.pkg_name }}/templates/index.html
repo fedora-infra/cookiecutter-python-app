@@ -1,0 +1,27 @@
+{% raw -%}
+{#
+SPDX-FileCopyrightText: Contributors to the Fedora Project
+
+SPDX-License-Identifier: GPL-3.0-or-later
+#}
+
+{% extends "main.html" %}
+
+{% block content %}
+    {{ super() }}
+
+    <div class="bg-light border-bottom py-5">
+        <div class="container section">
+            <div class="row">
+                <div class="col">
+                    {{
+                    {%- endraw -%}
+                    _("Welcome to {{ cookiecutter.name }}")
+                    {%- raw -%}
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{%- endraw %}

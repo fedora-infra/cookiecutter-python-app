@@ -33,6 +33,10 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+{% if cookiecutter.with_flask -%}
+    "Environment :: Web Environment",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+{% endif %}
 ]
 
 [tool.poetry.dependencies]
@@ -47,6 +51,17 @@ click = "^8.1.3"
 {% if cookiecutter.with_i18n -%}
 Babel = "^2.10.0"
 {%- endif %}
+{% if cookiecutter.with_flask -%}
+flask = "^3.0.0"
+flask-wtf = ">=0.14"
+flask-healthz = "^1.0.0"
+flask-talisman = ">=0.8.0"
+whitenoise = ">=5.3"
+gunicorn = ">=20.0.0"
+{% if cookiecutter.with_i18n -%}
+flask-babel = "^4.0.0"
+{%- endif %}
+{%- endif %}
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.0.0"
@@ -56,6 +71,7 @@ ruff = ">=0.1.1"
 coverage = {extras = ["toml"], version = ">=7.0.0"}
 diff-cover = ">=8.0.0"
 liccheck = ">=0.6"
+towncrier = ">=21.3.0"
 pre-commit = ">=2.13"
 
 [tool.poetry.group.docs.dependencies]
@@ -120,7 +136,7 @@ omit = [
 
 
 [tool.towncrier]
-package = "{{ cookiecutter.slug }}"
+package = "{{ cookiecutter.pkg_name }}"
 filename = "docs/release_notes.md"
 directory = "changelog.d"
 start_string = "<!-- towncrier release notes start -->\n"
