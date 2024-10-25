@@ -35,3 +35,14 @@ repos:
     rev: v3.0.2
     hooks:
       - id: reuse
+
+  # Hooks that need to be able to import the app
+  - repo: local
+    hooks:
+      # Towncrier-generated changelog
+      - id: towncrier
+        name: Towncrier
+        language: system
+        entry: poetry run towncrier build --draft
+        pass_filenames: false
+        files: changelog.d/
