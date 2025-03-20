@@ -9,10 +9,8 @@
    {%- endif -%}
 {%- endmacro -%}
 
-{{- top_line -}}
-
+{{- top_line }}
 Released on {{ versiondata.date }}. This is a {major|feature|bugfix} release that adds [short summary].
-
 {% for section, _ in sections.items() -%}
 {%- if section -%}
 ## {{section}}
@@ -55,8 +53,7 @@ No significant changes.
 {% if sections[section]["author"] -%}
 ### {{definitions['author']["name"]}}
 
-Many thanks to the contributors of bug reports, pull requests, and pull request
-reviews for this release:
+Many thanks to the contributors of bug reports, pull requests, and pull request reviews for this release:
 
 {% for text, values in sections[section]["author"].items() -%}
 - {{ text }}
