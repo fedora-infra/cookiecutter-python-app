@@ -71,6 +71,7 @@ ruff = ">=0.1.1"
 coverage = {extras = ["toml"], version = ">=7.0.0"}
 diff-cover = ">=8.0.0"
 liccheck = ">=0.6"
+poetry-plugin-export = "^1.8.0"
 towncrier = ">=21.3.0"
 pre-commit = ">=2.13"
 
