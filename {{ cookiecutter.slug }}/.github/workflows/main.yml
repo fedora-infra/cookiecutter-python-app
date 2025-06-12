@@ -3,16 +3,18 @@ name: Test & Build
 on:
   push:
     branches:
-      - stable
       - develop
       - main
+      - stable
+      - staging
     tags:
       - v*
   pull_request:
     branches:
-      - stable
       - develop
       - main
+      - stable
+      - staging
 
 jobs:
 
