@@ -29,10 +29,11 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 {% if cookiecutter.with_flask -%}
     "Environment :: Web Environment",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
@@ -40,7 +41,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 pydantic-settings = "^2.0.2"
 {% if cookiecutter.with_sqlalchemy -%}
 sqlalchemy-helpers = ">=0.12.1"

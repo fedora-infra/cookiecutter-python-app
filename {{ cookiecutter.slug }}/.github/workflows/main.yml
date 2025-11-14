@@ -107,10 +107,11 @@ jobs:
     strategy:
       matrix:
         pyver:
-          - py39
           - py310
           - py311
           - py312
+          - py313
+          - py314
 {% if cookiecutter.with_sqlalchemy %}
         sqlaver:
           - sqla1
