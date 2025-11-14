@@ -1,68 +1,68 @@
-[tool.poetry]
+[project]
 name = "{{ cookiecutter.slug }}"
 version = "0.1.0"
 description = "{{ cookiecutter.name }}"
-
 license = "GPL-3.0-or-later"
-
-authors = [
-  "Fedora Infrastructure <admin@fedoraproject.org>"
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+authors = [{ name = "Fedora Infrastructure", email = "admin@fedoraproject.org" }]
+keywords = ["fedora"]
+dynamic = ["classifiers"]
+dependencies = [
+    "pydantic-settings (>=2.0.2,<3.0.0)",
+{% if cookiecutter.with_sqlalchemy -%}
+    "sqlalchemy-helpers (>=2.0.0,<3.0.0)",
+{%- endif %}
+{% if cookiecutter.with_cli -%}
+    "click (>=8.1.3,<9.0.0)",
+{%- endif %}
+{% if cookiecutter.with_i18n -%}
+    "Babel (>=2.10.0,<3.0.0)",
+{%- endif %}
+{% if cookiecutter.with_flask -%}
+    "flask (>=3.0.0,<4.0.0)",
+    "flask-wtf (>=0.14.3,<2.0.0)",
+    "flask-healthz (>=1.0.0,<2.0.0)",
+    "flask-talisman>=0.8.0",
+    "whitenoise (>=5.3,<7.0)",
+    "gunicorn>=20.0.0",
+{% if cookiecutter.with_i18n -%}
+    "flask-babel (>=4.0.0,<5.0.0)",
+{%- endif %}
+{%- endif %}
 ]
 
-readme = "README.md"
-keywords = ["fedora"]
+{% if cookiecutter.with_cli -%}
+[project.scripts]
+"{{ cookiecutter.slug }}" = "{{ cookiecutter.pkg_name }}.cli:main"
+{%- endif %}
+
+# [project.optional-dependencies]
+
+[project.urls]
 repository = "{{ cookiecutter.github_url }}"
 homepage = "{{ cookiecutter.url }}"
 documentation = "{{ cookiecutter.docs_url }}"
 
+[tool.poetry]
 include = [
-    { path = "tox.ini", format = "sdist" },
-    { path = "tests", format = "sdist" },
-    { path = "docs", format = "sdist" },
-    { path = "*.example", format = "sdist" },
+    "tox.ini",
+    "tests",
+    "docs",
+    "*.example",
 {% if cookiecutter.with_i18n %}
-    { path = "babel.cfg", format = "sdist" },
+    "babel.cfg",
 {% endif %}
 ]
 
 classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
 {% if cookiecutter.with_flask -%}
     "Environment :: Web Environment",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 {% endif %}
 ]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-pydantic-settings = "^2.0.2"
-{% if cookiecutter.with_sqlalchemy -%}
-sqlalchemy-helpers = ">=0.12.1"
-{%- endif %}
-{% if cookiecutter.with_cli -%}
-click = "^8.1.3"
-{%- endif %}
-{% if cookiecutter.with_i18n -%}
-Babel = "^2.10.0"
-{%- endif %}
-{% if cookiecutter.with_flask -%}
-flask = "^3.0.0"
-flask-wtf = ">=0.14"
-flask-healthz = "^1.0.0"
-flask-talisman = ">=0.8.0"
-whitenoise = ">=5.3"
-gunicorn = ">=20.0.0"
-{% if cookiecutter.with_i18n -%}
-flask-babel = "^4.0.0"
-{%- endif %}
-{%- endif %}
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.0.0"
@@ -80,13 +80,6 @@ pre-commit = ">=2.13"
 sphinx = ">=4.0"
 myst-parser = ">=0.16"
 sphinxcontrib-napoleon = "*"
-
-# [tool.poetry.extras]
-
-{% if cookiecutter.with_cli -%}
-[tool.poetry.scripts]
-"{{ cookiecutter.slug }}" = "{{ cookiecutter.pkg_name }}.cli:main"
-{%- endif %}
 
 [build-system]
 requires = ["poetry-core"]
