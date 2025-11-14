@@ -86,4 +86,3 @@ jobs:
       - fedora-latest-stable
       - epel-9
       - epel-10
-
