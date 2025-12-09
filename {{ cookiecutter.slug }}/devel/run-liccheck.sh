@@ -7,7 +7,7 @@
 
 STRATEGY_URL=https://raw.githubusercontent.com/fedora-infra/shared/main/liccheck-strategy.ini
 
-trap 'rm -f "$TMPFILE $STRATEGY_TMPFILE"' EXIT
+trap 'rm -f $TMPFILE $STRATEGY_TMPFILE' EXIT
 
 set -e
 set -x
